@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImage from "@/assets/hero-goldsmith.jpg";
 import { ArrowUpRight, Award, GraduationCap, Leaf, Sparkles } from "lucide-react";
+import { LinkButton } from "@/components/site/Button";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -78,19 +79,13 @@ function HomePage() {
               politischer, wirtschaftlicher und kultureller Ebene.
             </p>
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
-              <Link
-                to="/der-zv"
-                className="btn-base bg-primary text-primary-foreground hover:bg-accent w-full sm:w-auto"
-              >
+              <LinkButton to="/der-zv" size="lg" fullWidth>
                 Über den Verband
-                <ArrowUpRight size={16} />
-              </Link>
-              <Link
-                to="/gold-silberschmiede"
-                className="btn-base border border-border bg-card text-foreground hover:border-accent hover:text-accent w-full sm:w-auto"
-              >
+                <ArrowUpRight size={18} aria-hidden />
+              </LinkButton>
+              <LinkButton to="/gold-silberschmiede" variant="outline" size="lg" fullWidth>
                 Mitgliedsbetrieb finden
-              </Link>
+              </LinkButton>
             </div>
           </div>
 
@@ -199,12 +194,9 @@ function HomePage() {
             Um eine Meinungsvielfalt zu erfahren und vertreten zu können, braucht der
             Zentralverband die Mitarbeit aller Goldschmiedinnen.
           </p>
-          <Link
-            to="/kontakt"
-            className="btn-base bg-primary text-primary-foreground hover:bg-accent mt-7 sm:mt-8"
-          >
-            Kontakt aufnehmen <ArrowUpRight size={16} />
-          </Link>
+          <LinkButton to="/kontakt" size="lg" className="mt-7 sm:mt-8">
+            Kontakt aufnehmen <ArrowUpRight size={18} aria-hidden />
+          </LinkButton>
         </div>
       </section>
     </>
