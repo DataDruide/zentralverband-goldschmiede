@@ -9,8 +9,80 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WettbewerbeRouteImport } from './routes/wettbewerbe'
+import { Route as NachhaltigkeitRouteImport } from './routes/nachhaltigkeit'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as GoldSilberschmiedeRouteImport } from './routes/gold-silberschmiede'
+import { Route as FortbildungenRouteImport } from './routes/fortbildungen'
+import { Route as DerZvRouteImport } from './routes/der-zv'
+import { Route as DatenschutzRouteImport } from './routes/datenschutz'
+import { Route as BarrierefreiheitRouteImport } from './routes/barrierefreiheit'
+import { Route as AusWeiterbildungRouteImport } from './routes/aus-weiterbildung'
+import { Route as AktuellRouteImport } from './routes/aktuell'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WettbewerbeRoute = WettbewerbeRouteImport.update({
+  id: '/wettbewerbe',
+  path: '/wettbewerbe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NachhaltigkeitRoute = NachhaltigkeitRouteImport.update({
+  id: '/nachhaltigkeit',
+  path: '/nachhaltigkeit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpressumRoute = ImpressumRouteImport.update({
+  id: '/impressum',
+  path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GoldSilberschmiedeRoute = GoldSilberschmiedeRouteImport.update({
+  id: '/gold-silberschmiede',
+  path: '/gold-silberschmiede',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FortbildungenRoute = FortbildungenRouteImport.update({
+  id: '/fortbildungen',
+  path: '/fortbildungen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DerZvRoute = DerZvRouteImport.update({
+  id: '/der-zv',
+  path: '/der-zv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatenschutzRoute = DatenschutzRouteImport.update({
+  id: '/datenschutz',
+  path: '/datenschutz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BarrierefreiheitRoute = BarrierefreiheitRouteImport.update({
+  id: '/barrierefreiheit',
+  path: '/barrierefreiheit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AusWeiterbildungRoute = AusWeiterbildungRouteImport.update({
+  id: '/aus-weiterbildung',
+  path: '/aus-weiterbildung',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AktuellRoute = AktuellRouteImport.update({
+  id: '/aktuell',
+  path: '/aktuell',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +91,200 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aktuell': typeof AktuellRoute
+  '/aus-weiterbildung': typeof AusWeiterbildungRoute
+  '/barrierefreiheit': typeof BarrierefreiheitRoute
+  '/datenschutz': typeof DatenschutzRoute
+  '/der-zv': typeof DerZvRoute
+  '/fortbildungen': typeof FortbildungenRoute
+  '/gold-silberschmiede': typeof GoldSilberschmiedeRoute
+  '/impressum': typeof ImpressumRoute
+  '/kontakt': typeof KontaktRoute
+  '/login': typeof LoginRoute
+  '/nachhaltigkeit': typeof NachhaltigkeitRoute
+  '/wettbewerbe': typeof WettbewerbeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aktuell': typeof AktuellRoute
+  '/aus-weiterbildung': typeof AusWeiterbildungRoute
+  '/barrierefreiheit': typeof BarrierefreiheitRoute
+  '/datenschutz': typeof DatenschutzRoute
+  '/der-zv': typeof DerZvRoute
+  '/fortbildungen': typeof FortbildungenRoute
+  '/gold-silberschmiede': typeof GoldSilberschmiedeRoute
+  '/impressum': typeof ImpressumRoute
+  '/kontakt': typeof KontaktRoute
+  '/login': typeof LoginRoute
+  '/nachhaltigkeit': typeof NachhaltigkeitRoute
+  '/wettbewerbe': typeof WettbewerbeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aktuell': typeof AktuellRoute
+  '/aus-weiterbildung': typeof AusWeiterbildungRoute
+  '/barrierefreiheit': typeof BarrierefreiheitRoute
+  '/datenschutz': typeof DatenschutzRoute
+  '/der-zv': typeof DerZvRoute
+  '/fortbildungen': typeof FortbildungenRoute
+  '/gold-silberschmiede': typeof GoldSilberschmiedeRoute
+  '/impressum': typeof ImpressumRoute
+  '/kontakt': typeof KontaktRoute
+  '/login': typeof LoginRoute
+  '/nachhaltigkeit': typeof NachhaltigkeitRoute
+  '/wettbewerbe': typeof WettbewerbeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/aktuell'
+    | '/aus-weiterbildung'
+    | '/barrierefreiheit'
+    | '/datenschutz'
+    | '/der-zv'
+    | '/fortbildungen'
+    | '/gold-silberschmiede'
+    | '/impressum'
+    | '/kontakt'
+    | '/login'
+    | '/nachhaltigkeit'
+    | '/wettbewerbe'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/aktuell'
+    | '/aus-weiterbildung'
+    | '/barrierefreiheit'
+    | '/datenschutz'
+    | '/der-zv'
+    | '/fortbildungen'
+    | '/gold-silberschmiede'
+    | '/impressum'
+    | '/kontakt'
+    | '/login'
+    | '/nachhaltigkeit'
+    | '/wettbewerbe'
+  id:
+    | '__root__'
+    | '/'
+    | '/aktuell'
+    | '/aus-weiterbildung'
+    | '/barrierefreiheit'
+    | '/datenschutz'
+    | '/der-zv'
+    | '/fortbildungen'
+    | '/gold-silberschmiede'
+    | '/impressum'
+    | '/kontakt'
+    | '/login'
+    | '/nachhaltigkeit'
+    | '/wettbewerbe'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AktuellRoute: typeof AktuellRoute
+  AusWeiterbildungRoute: typeof AusWeiterbildungRoute
+  BarrierefreiheitRoute: typeof BarrierefreiheitRoute
+  DatenschutzRoute: typeof DatenschutzRoute
+  DerZvRoute: typeof DerZvRoute
+  FortbildungenRoute: typeof FortbildungenRoute
+  GoldSilberschmiedeRoute: typeof GoldSilberschmiedeRoute
+  ImpressumRoute: typeof ImpressumRoute
+  KontaktRoute: typeof KontaktRoute
+  LoginRoute: typeof LoginRoute
+  NachhaltigkeitRoute: typeof NachhaltigkeitRoute
+  WettbewerbeRoute: typeof WettbewerbeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wettbewerbe': {
+      id: '/wettbewerbe'
+      path: '/wettbewerbe'
+      fullPath: '/wettbewerbe'
+      preLoaderRoute: typeof WettbewerbeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nachhaltigkeit': {
+      id: '/nachhaltigkeit'
+      path: '/nachhaltigkeit'
+      fullPath: '/nachhaltigkeit'
+      preLoaderRoute: typeof NachhaltigkeitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impressum': {
+      id: '/impressum'
+      path: '/impressum'
+      fullPath: '/impressum'
+      preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gold-silberschmiede': {
+      id: '/gold-silberschmiede'
+      path: '/gold-silberschmiede'
+      fullPath: '/gold-silberschmiede'
+      preLoaderRoute: typeof GoldSilberschmiedeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fortbildungen': {
+      id: '/fortbildungen'
+      path: '/fortbildungen'
+      fullPath: '/fortbildungen'
+      preLoaderRoute: typeof FortbildungenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/der-zv': {
+      id: '/der-zv'
+      path: '/der-zv'
+      fullPath: '/der-zv'
+      preLoaderRoute: typeof DerZvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/datenschutz': {
+      id: '/datenschutz'
+      path: '/datenschutz'
+      fullPath: '/datenschutz'
+      preLoaderRoute: typeof DatenschutzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/barrierefreiheit': {
+      id: '/barrierefreiheit'
+      path: '/barrierefreiheit'
+      fullPath: '/barrierefreiheit'
+      preLoaderRoute: typeof BarrierefreiheitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aus-weiterbildung': {
+      id: '/aus-weiterbildung'
+      path: '/aus-weiterbildung'
+      fullPath: '/aus-weiterbildung'
+      preLoaderRoute: typeof AusWeiterbildungRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aktuell': {
+      id: '/aktuell'
+      path: '/aktuell'
+      fullPath: '/aktuell'
+      preLoaderRoute: typeof AktuellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +297,19 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AktuellRoute: AktuellRoute,
+  AusWeiterbildungRoute: AusWeiterbildungRoute,
+  BarrierefreiheitRoute: BarrierefreiheitRoute,
+  DatenschutzRoute: DatenschutzRoute,
+  DerZvRoute: DerZvRoute,
+  FortbildungenRoute: FortbildungenRoute,
+  GoldSilberschmiedeRoute: GoldSilberschmiedeRoute,
+  ImpressumRoute: ImpressumRoute,
+  KontaktRoute: KontaktRoute,
+  LoginRoute: LoginRoute,
+  NachhaltigkeitRoute: NachhaltigkeitRoute,
+  WettbewerbeRoute: WettbewerbeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
