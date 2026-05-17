@@ -124,7 +124,37 @@
   .container-prose {
     max-width: 72rem;
     margin-inline: auto;
-    padding-inline: 1.5rem;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-prose { padding-inline: 1.5rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .container-prose { padding-inline: 2rem; }
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+    min-height: 2.75rem;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 640px) {
+    .btn-base { padding: 0.8125rem 1.5rem; }
   }
 
   .hairline {
