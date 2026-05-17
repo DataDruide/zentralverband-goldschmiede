@@ -65,38 +65,37 @@ function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-border">
-        <div className="container-prose grid gap-12 py-16 md:py-24 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7 flex flex-col justify-center">
-            <p className="text-xs uppercase tracking-[0.22em] text-accent">Seit 1900</p>
-            <h1 className="mt-4 font-display text-5xl md:text-7xl leading-[1.05] text-foreground">
-              Schmuck und Gerät
-              <br />
+        <div className="container-prose grid gap-10 py-12 sm:py-16 md:py-24 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
+            <p className="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-accent">Seit 1900</p>
+            <h1 className="mt-3 sm:mt-4 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-foreground text-balance">
+              Schmuck und Gerät{" "}
               <span className="text-accent italic">von Menschen für Menschen.</span>
             </h1>
-            <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-6 sm:mt-8 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty">
               Sich zu schmücken ist ein Grundbedürfnis des Menschen. Der Zentralverband vertritt
               die Interessen aller Goldschmiedinnen und Silberschmiedinnen in Deutschland – auf
               politischer, wirtschaftlicher und kultureller Ebene.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
               <Link
                 to="/der-zv"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-accent transition-colors"
+                className="btn-base bg-primary text-primary-foreground hover:bg-accent w-full sm:w-auto"
               >
                 Über den Verband
                 <ArrowUpRight size={16} />
               </Link>
               <Link
                 to="/gold-silberschmiede"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:border-accent hover:text-accent transition-colors"
+                className="btn-base border border-border bg-card text-foreground hover:border-accent hover:text-accent w-full sm:w-auto"
               >
                 Mitgliedsbetrieb finden
               </Link>
             </div>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-border shadow-[0_30px_80px_-40px_oklch(0.4_0.05_60/0.5)]">
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <div className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/5] overflow-hidden rounded-sm border border-border shadow-[0_30px_80px_-40px_oklch(0.4_0.05_60/0.5)]">
               <img
                 src={heroImage}
                 alt="Goldschmiedearbeit auf der Werkbank"
@@ -104,10 +103,10 @@ function HomePage() {
                 height={1080}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-cream">
-                <p className="text-xs uppercase tracking-[0.22em] opacity-80">Imagefilm 2024</p>
-                <p className="font-display text-2xl mt-1">Unser Handwerk in Bewegung</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-cream">
+                <p className="text-[10px] sm:text-xs uppercase tracking-[0.22em] opacity-80">Imagefilm 2024</p>
+                <p className="font-display text-xl sm:text-2xl mt-1 text-balance">Unser Handwerk in Bewegung</p>
               </div>
             </div>
           </div>
@@ -115,13 +114,13 @@ function HomePage() {
       </section>
 
       {/* HIGHLIGHTS */}
-      <section className="container-prose py-20">
-        <div className="grid gap-px bg-border rounded-sm overflow-hidden md:grid-cols-2 lg:grid-cols-4">
+      <section className="container-prose py-14 sm:py-20">
+        <div className="grid gap-px bg-border rounded-sm overflow-hidden sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="bg-card p-8 hover:bg-secondary/60 transition-colors">
+            <div key={title} className="bg-card p-6 sm:p-8 hover:bg-secondary/60 transition-colors">
               <Icon className="text-accent" size={28} strokeWidth={1.5} />
-              <h3 className="mt-5 font-display text-xl">{title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{text}</p>
+              <h3 className="mt-4 sm:mt-5 font-display text-lg sm:text-xl text-balance">{title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed text-pretty">{text}</p>
             </div>
           ))}
         </div>
@@ -129,14 +128,14 @@ function HomePage() {
 
       {/* INTRO TEXT */}
       <section className="bg-secondary/50 border-y border-border">
-        <div className="container-prose grid gap-10 py-20 lg:grid-cols-12">
+        <div className="container-prose grid gap-8 lg:gap-10 py-14 sm:py-20 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="text-xs uppercase tracking-[0.22em] text-accent">Der Zentralverband</p>
-            <h2 className="mt-3 font-display text-4xl">
-              Ein Dachverband<br />mit Haltung.
+            <p className="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-accent">Der Zentralverband</p>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl text-balance">
+              Ein Dachverband mit Haltung.
             </h2>
           </div>
-          <div className="lg:col-span-8 space-y-5 text-foreground/85 leading-relaxed">
+          <div className="lg:col-span-8 space-y-5 text-foreground/85 leading-relaxed text-pretty">
             <p>
               Seit 1900 kann der Zentralverband seine Aufgaben in unterschiedlichen
               Gesellschaftsordnungen auf politischer, wirtschaftlicher und kultureller Ebene
@@ -160,28 +159,28 @@ function HomePage() {
       </section>
 
       {/* NEWS */}
-      <section className="container-prose py-20">
-        <div className="flex items-end justify-between gap-4 mb-10">
+      <section className="container-prose py-14 sm:py-20">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-accent">Aktuell</p>
-            <h2 className="mt-2 font-display text-4xl">Neuigkeiten & Termine</h2>
+            <p className="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-accent">Aktuell</p>
+            <h2 className="mt-2 font-display text-3xl sm:text-4xl text-balance">Neuigkeiten & Termine</h2>
           </div>
-          <Link to="/aktuell" className="text-sm text-accent hover:underline">
+          <Link to="/aktuell" className="text-sm text-accent hover:underline self-start sm:self-auto">
             Alle Meldungen →
           </Link>
         </div>
 
-        <div className="grid gap-px bg-border md:grid-cols-3 rounded-sm overflow-hidden">
+        <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 rounded-sm overflow-hidden">
           {newsItems.map((item) => (
-            <article key={item.title} className="bg-card p-8 flex flex-col">
+            <article key={item.title} className="bg-card p-6 sm:p-8 flex flex-col">
               <time className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
                 {item.date}
               </time>
-              <h3 className="mt-4 font-display text-xl leading-snug">{item.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">
+              <h3 className="mt-3 sm:mt-4 font-display text-lg sm:text-xl leading-snug text-balance">{item.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1 text-pretty">
                 {item.excerpt}
               </p>
-              <Link to="/aktuell" className="mt-6 text-sm text-accent hover:underline self-start">
+              <Link to="/aktuell" className="mt-5 sm:mt-6 text-sm text-accent hover:underline self-start">
                 weiterlesen →
               </Link>
             </article>
@@ -190,19 +189,19 @@ function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="container-prose pb-24">
-        <div className="rounded-sm border border-accent/40 bg-card p-10 md:p-14 text-center">
-          <p className="text-xs uppercase tracking-[0.22em] text-accent">Mitglied werden</p>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl">
+      <section className="container-prose pb-16 sm:pb-24">
+        <div className="rounded-sm border border-accent/40 bg-card p-8 sm:p-10 md:p-14 text-center">
+          <p className="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-accent">Mitglied werden</p>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl text-balance">
             Werden Sie Teil unserer Gemeinschaft.
           </h2>
-          <p className="mt-5 mx-auto max-w-2xl text-muted-foreground">
+          <p className="mt-4 sm:mt-5 mx-auto max-w-2xl text-base sm:text-lg text-muted-foreground text-pretty">
             Um eine Meinungsvielfalt zu erfahren und vertreten zu können, braucht der
             Zentralverband die Mitarbeit aller Goldschmiedinnen.
           </p>
           <Link
             to="/kontakt"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-accent transition-colors"
+            className="btn-base bg-primary text-primary-foreground hover:bg-accent mt-7 sm:mt-8"
           >
             Kontakt aufnehmen <ArrowUpRight size={16} />
           </Link>
