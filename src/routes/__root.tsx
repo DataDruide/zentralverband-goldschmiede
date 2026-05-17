@@ -11,22 +11,19 @@ import {
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { SkipLink } from "@/components/site/SkipLink";
+import { LinkButton, Button } from "@/components/site/Button";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center px-4">
+    <div className="flex min-h-[60vh] items-center justify-center px-4 py-16">
       <div className="max-w-md text-center">
-        <p className="text-xs uppercase tracking-[0.22em] text-accent">404</p>
-        <h1 className="mt-3 font-display text-4xl">Seite nicht gefunden</h1>
-        <p className="mt-3 text-sm text-muted-foreground">
+        <p className="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-accent">404</p>
+        <h1 className="mt-3 font-display text-3xl sm:text-4xl">Seite nicht gefunden</h1>
+        <p className="mt-3 text-sm sm:text-base text-muted-foreground">
           Die von Ihnen aufgerufene Seite existiert nicht oder wurde verschoben.
         </p>
-        <Link
-          to="/"
-          className="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-accent transition-colors"
-        >
-          Zur Startseite
-        </Link>
+        <LinkButton to="/" className="mt-6">Zur Startseite</LinkButton>
       </div>
     </div>
   );
@@ -36,18 +33,15 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   return (
-    <div className="flex min-h-[60vh] items-center justify-center px-4">
+    <div className="flex min-h-[60vh] items-center justify-center px-4 py-16">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-2xl">Diese Seite konnte nicht geladen werden</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="font-display text-2xl sm:text-3xl">Diese Seite konnte nicht geladen werden</h1>
+        <p className="mt-2 text-sm sm:text-base text-muted-foreground">
           Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.
         </p>
-        <button
-          onClick={() => { router.invalidate(); reset(); }}
-          className="mt-6 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-accent transition-colors"
-        >
+        <Button onClick={() => { router.invalidate(); reset(); }} className="mt-6">
           Erneut versuchen
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -107,8 +101,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
+        <SkipLink />
         <SiteHeader />
-        <main className="flex-1">
+        <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
           <Outlet />
         </main>
         <SiteFooter />

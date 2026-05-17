@@ -23,10 +23,10 @@ function DerZVPage() {
         title="Der ZV"
         intro="Ist der Dachverband für das Goldschmiede- und Silberschmiedehandwerk."
       />
-      <section className="container-prose py-16 grid gap-12 lg:grid-cols-3">
-        <aside className="lg:col-span-1 space-y-6">
-          <div className="rounded-sm border border-border bg-card p-6">
-            <h3 className="font-display text-xl">Struktur</h3>
+      <section className="container-prose py-12 sm:py-16 grid gap-8 lg:gap-12 lg:grid-cols-3">
+        <aside className="lg:col-span-1">
+          <div className="rounded-sm border border-border bg-card p-5 sm:p-6 lg:sticky lg:top-24">
+            <h2 className="font-display text-lg sm:text-xl">Struktur</h2>
             <ul className="mt-4 space-y-3 text-sm text-foreground/80">
               <li>· Zentralverband</li>
               <li>· Landesinnungsverband</li>
@@ -35,7 +35,7 @@ function DerZVPage() {
           </div>
         </aside>
 
-        <div className="lg:col-span-2 space-y-6 text-foreground/85 leading-relaxed">
+        <div className="lg:col-span-2 space-y-5 text-foreground/85 leading-relaxed text-pretty">
           <p>
             <strong>Der Zentralverband</strong> hat einen gewählten Vorstand, der verpflichtet
             ist, die Belange der Kollegen zu vertreten und die Aufgaben, die die
