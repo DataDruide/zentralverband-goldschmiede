@@ -11,6 +11,8 @@ import {
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { SkipLink } from "@/components/site/SkipLink";
+import { LinkButton, Button } from "@/components/site/Button";
 
 function NotFoundComponent() {
   return (
