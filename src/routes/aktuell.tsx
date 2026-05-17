@@ -33,17 +33,17 @@ function AktuellPage() {
   return (
     <>
       <PageHeader eyebrow="News" title="Aktuell" intro="Meldungen, Tagungen und Termine aus dem Verband." />
-      <section className="container-prose py-16">
+      <section className="container-prose py-12 sm:py-16">
         <div className="divide-y divide-border">
           {news.map((n) => (
-            <article key={n.title} className="grid gap-6 py-10 md:grid-cols-12">
-              <time className="md:col-span-2 text-sm uppercase tracking-[0.18em] text-muted-foreground">
+            <article key={n.title} className="grid gap-4 sm:gap-6 py-8 sm:py-10 md:grid-cols-12">
+              <time className="md:col-span-2 text-xs sm:text-sm uppercase tracking-[0.18em] text-muted-foreground">
                 {n.date}
               </time>
               <div className="md:col-span-10">
-                <h2 className="font-display text-2xl md:text-3xl leading-tight">{n.title}</h2>
-                <p className="mt-4 text-foreground/80 leading-relaxed max-w-3xl">{n.body}</p>
-                <Link to="/aktuell" className="mt-4 inline-block text-sm text-accent hover:underline">
+                <h2 className="font-display text-xl sm:text-2xl md:text-3xl leading-tight text-balance">{n.title}</h2>
+                <p className="mt-3 sm:mt-4 text-foreground/80 leading-relaxed max-w-3xl text-pretty">{n.body}</p>
+                <Link to="/aktuell" className="mt-4 inline-block text-sm text-accent hover:underline underline-offset-2">
                   weiterlesen →
                 </Link>
               </div>
