@@ -13,6 +13,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SkipLink } from "@/components/site/SkipLink";
 import { LinkButton, Button } from "@/components/site/Button";
+import { CookieBanner } from "@/components/site/CookieBanner";
 
 function NotFoundComponent() {
   return (
@@ -107,6 +108,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <CookieBanner />
       </div>
     </QueryClientProvider>
   );
