@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
@@ -14,6 +13,9 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { SkipLink } from "@/components/site/SkipLink";
 import { LinkButton, Button } from "@/components/site/Button";
 import { CookieBanner } from "@/components/site/CookieBanner";
+import { AccessibilityPanel } from "@/components/site/AccessibilityPanel";
+import { AuthProvider } from "@/hooks/useAuth";
+import { Toaster } from "sonner";
 
 function NotFoundComponent() {
   return (
@@ -101,15 +103,19 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
-        <SkipLink />
-        <SiteHeader />
-        <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
-          <Outlet />
-        </main>
-        <SiteFooter />
-        <CookieBanner />
-      </div>
+      <AuthProvider>
+        <div className="flex min-h-screen flex-col">
+          <SkipLink />
+          <SiteHeader />
+          <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+            <Outlet />
+          </main>
+          <SiteFooter />
+          <CookieBanner />
+          <AccessibilityPanel />
+          <Toaster position="top-right" richColors />
+        </div>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
