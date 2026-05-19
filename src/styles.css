@@ -49,11 +49,30 @@
   --radius: 0.5rem;
 
   /* Warm cream tones – inspired by the original site palette */
-  --cream: oklch(0.985 0.012 85);            /* #fbf8f0 ish */
-  --parchment: oklch(0.955 0.022 88);        /* slightly deeper cream */
-  --gold: oklch(0.72 0.13 80);               /* muted antique gold */
-  --gold-soft: oklch(0.88 0.07 85);          /* light gold accent */
-  --ink: oklch(0.22 0.015 60);               /* deep warm anthracite */
+  --cream: oklch(0.985 0.012 85);
+  --parchment: oklch(0.955 0.022 88);
+  --gold: oklch(0.72 0.13 80);
+  --gold-soft: oklch(0.88 0.07 85);
+  --ink: oklch(0.22 0.015 60);
+
+  /* 2026 jewel accents – moderne Sektions-Abgrenzung */
+  --emerald: oklch(0.52 0.11 165);           /* tiefes Smaragd */
+  --emerald-soft: oklch(0.92 0.04 165);
+  --plum: oklch(0.38 0.08 340);              /* tiefes Pflaume */
+  --plum-soft: oklch(0.93 0.025 340);
+  --ember: oklch(0.62 0.16 45);              /* warmes Kupfer */
+  --ember-soft: oklch(0.94 0.04 60);
+  --ice: oklch(0.97 0.012 230);              /* kühles Hellblau */
+
+  --gradient-hero: linear-gradient(135deg,
+    color-mix(in oklch, var(--gold) 18%, var(--cream)) 0%,
+    var(--cream) 45%,
+    color-mix(in oklch, var(--ember) 12%, var(--cream)) 100%);
+  --gradient-band: linear-gradient(180deg,
+    color-mix(in oklch, var(--emerald) 8%, var(--cream)) 0%,
+    color-mix(in oklch, var(--emerald) 14%, var(--cream)) 100%);
+  --shadow-soft: 0 1px 2px oklch(0.2 0.02 60 / 0.04), 0 8px 24px -12px oklch(0.2 0.02 60 / 0.18);
+  --shadow-jewel: 0 30px 80px -40px color-mix(in oklch, var(--gold) 60%, transparent);
 
   --background: var(--cream);
   --foreground: var(--ink);
@@ -74,6 +93,16 @@
   --border: oklch(0.9 0.02 85);
   --input: oklch(0.92 0.018 85);
   --ring: var(--gold);
+}
+
+@theme inline {
+  --color-emerald-jewel: var(--emerald);
+  --color-emerald-soft: var(--emerald-soft);
+  --color-plum: var(--plum);
+  --color-plum-soft: var(--plum-soft);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
+  --color-ice: var(--ice);
 }
 
 .dark {
@@ -198,5 +227,81 @@
   .gold-underline {
     background-image: linear-gradient(transparent 92%, var(--gold) 92%);
     background-size: 100% 100%;
+  }
+
+  /* Section accent treatments – moderne 2026 Abgrenzung */
+  .bg-hero-grad { background: var(--gradient-hero); }
+  .bg-emerald-band { background: var(--gradient-band); }
+  .bg-ink-band {
+    background: linear-gradient(135deg, var(--ink) 0%, oklch(0.28 0.02 60) 100%);
+    color: var(--cream);
+  }
+  .bg-ember-soft { background-color: var(--ember-soft); }
+  .bg-plum-soft { background-color: var(--plum-soft); }
+  .bg-ice { background-color: var(--ice); }
+
+  .section-rule {
+    position: relative;
+  }
+  .section-rule::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 64px; height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--gold), var(--ember));
+  }
+
+  .accent-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: var(--ember);
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .card-jewel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .card-jewel:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklch, var(--gold) 50%, var(--border));
+    box-shadow: var(--shadow-jewel);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: color-mix(in oklch, var(--gold) 14%, transparent);
+    color: color-mix(in oklch, var(--ink) 80%, var(--gold));
+    border: 1px solid color-mix(in oklch, var(--gold) 30%, transparent);
+  }
+  .chip-emerald {
+    background: color-mix(in oklch, var(--emerald) 12%, transparent);
+    color: var(--emerald);
+    border-color: color-mix(in oklch, var(--emerald) 35%, transparent);
+  }
+  .chip-ember {
+    background: color-mix(in oklch, var(--ember) 14%, transparent);
+    color: var(--ember);
+    border-color: color-mix(in oklch, var(--ember) 35%, transparent);
+  }
+  .chip-plum {
+    background: color-mix(in oklch, var(--plum) 12%, transparent);
+    color: var(--plum);
+    border-color: color-mix(in oklch, var(--plum) 35%, transparent);
   }
 }

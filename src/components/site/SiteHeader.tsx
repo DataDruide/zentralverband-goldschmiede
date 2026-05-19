@@ -22,7 +22,7 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-[var(--gold)] before:via-[var(--ember)] before:to-[var(--plum)]">
       <div className="container-prose flex items-center justify-between gap-3 py-3 sm:py-4">
         <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group min-w-0" onClick={() => setOpen(false)}>
           <span
