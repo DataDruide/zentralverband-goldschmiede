@@ -11,9 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WettbewerbeRouteImport } from './routes/wettbewerbe'
 import { Route as NachhaltigkeitRouteImport } from './routes/nachhaltigkeit'
+import { Route as MitgliedersucheRouteImport } from './routes/mitgliedersuche'
+import { Route as MitgliederbereichRouteImport } from './routes/mitgliederbereich'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as ImmateriellesKulturerbeRouteImport } from './routes/immaterielles-kulturerbe'
 import { Route as GoldSilberschmiedeRouteImport } from './routes/gold-silberschmiede'
 import { Route as FortbildungenRouteImport } from './routes/fortbildungen'
 import { Route as DerZvRouteImport } from './routes/der-zv'
@@ -21,6 +24,7 @@ import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as BarrierefreiheitRouteImport } from './routes/barrierefreiheit'
 import { Route as AusWeiterbildungRouteImport } from './routes/aus-weiterbildung'
 import { Route as AktuellRouteImport } from './routes/aktuell'
+import { Route as R125JahreRouteImport } from './routes/125-jahre'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WettbewerbeRoute = WettbewerbeRouteImport.update({
@@ -31,6 +35,16 @@ const WettbewerbeRoute = WettbewerbeRouteImport.update({
 const NachhaltigkeitRoute = NachhaltigkeitRouteImport.update({
   id: '/nachhaltigkeit',
   path: '/nachhaltigkeit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MitgliedersucheRoute = MitgliedersucheRouteImport.update({
+  id: '/mitgliedersuche',
+  path: '/mitgliedersuche',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MitgliederbereichRoute = MitgliederbereichRouteImport.update({
+  id: '/mitgliederbereich',
+  path: '/mitgliederbereich',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -46,6 +60,11 @@ const KontaktRoute = KontaktRouteImport.update({
 const ImpressumRoute = ImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImmateriellesKulturerbeRoute = ImmateriellesKulturerbeRouteImport.update({
+  id: '/immaterielles-kulturerbe',
+  path: '/immaterielles-kulturerbe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GoldSilberschmiedeRoute = GoldSilberschmiedeRouteImport.update({
@@ -83,6 +102,11 @@ const AktuellRoute = AktuellRouteImport.update({
   path: '/aktuell',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R125JahreRoute = R125JahreRouteImport.update({
+  id: '/125-jahre',
+  path: '/125-jahre',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -91,6 +115,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/125-jahre': typeof R125JahreRoute
   '/aktuell': typeof AktuellRoute
   '/aus-weiterbildung': typeof AusWeiterbildungRoute
   '/barrierefreiheit': typeof BarrierefreiheitRoute
@@ -98,14 +123,18 @@ export interface FileRoutesByFullPath {
   '/der-zv': typeof DerZvRoute
   '/fortbildungen': typeof FortbildungenRoute
   '/gold-silberschmiede': typeof GoldSilberschmiedeRoute
+  '/immaterielles-kulturerbe': typeof ImmateriellesKulturerbeRoute
   '/impressum': typeof ImpressumRoute
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
+  '/mitgliederbereich': typeof MitgliederbereichRoute
+  '/mitgliedersuche': typeof MitgliedersucheRoute
   '/nachhaltigkeit': typeof NachhaltigkeitRoute
   '/wettbewerbe': typeof WettbewerbeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/125-jahre': typeof R125JahreRoute
   '/aktuell': typeof AktuellRoute
   '/aus-weiterbildung': typeof AusWeiterbildungRoute
   '/barrierefreiheit': typeof BarrierefreiheitRoute
@@ -113,15 +142,19 @@ export interface FileRoutesByTo {
   '/der-zv': typeof DerZvRoute
   '/fortbildungen': typeof FortbildungenRoute
   '/gold-silberschmiede': typeof GoldSilberschmiedeRoute
+  '/immaterielles-kulturerbe': typeof ImmateriellesKulturerbeRoute
   '/impressum': typeof ImpressumRoute
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
+  '/mitgliederbereich': typeof MitgliederbereichRoute
+  '/mitgliedersuche': typeof MitgliedersucheRoute
   '/nachhaltigkeit': typeof NachhaltigkeitRoute
   '/wettbewerbe': typeof WettbewerbeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/125-jahre': typeof R125JahreRoute
   '/aktuell': typeof AktuellRoute
   '/aus-weiterbildung': typeof AusWeiterbildungRoute
   '/barrierefreiheit': typeof BarrierefreiheitRoute
@@ -129,9 +162,12 @@ export interface FileRoutesById {
   '/der-zv': typeof DerZvRoute
   '/fortbildungen': typeof FortbildungenRoute
   '/gold-silberschmiede': typeof GoldSilberschmiedeRoute
+  '/immaterielles-kulturerbe': typeof ImmateriellesKulturerbeRoute
   '/impressum': typeof ImpressumRoute
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
+  '/mitgliederbereich': typeof MitgliederbereichRoute
+  '/mitgliedersuche': typeof MitgliedersucheRoute
   '/nachhaltigkeit': typeof NachhaltigkeitRoute
   '/wettbewerbe': typeof WettbewerbeRoute
 }
@@ -139,6 +175,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/125-jahre'
     | '/aktuell'
     | '/aus-weiterbildung'
     | '/barrierefreiheit'
@@ -146,14 +183,18 @@ export interface FileRouteTypes {
     | '/der-zv'
     | '/fortbildungen'
     | '/gold-silberschmiede'
+    | '/immaterielles-kulturerbe'
     | '/impressum'
     | '/kontakt'
     | '/login'
+    | '/mitgliederbereich'
+    | '/mitgliedersuche'
     | '/nachhaltigkeit'
     | '/wettbewerbe'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/125-jahre'
     | '/aktuell'
     | '/aus-weiterbildung'
     | '/barrierefreiheit'
@@ -161,14 +202,18 @@ export interface FileRouteTypes {
     | '/der-zv'
     | '/fortbildungen'
     | '/gold-silberschmiede'
+    | '/immaterielles-kulturerbe'
     | '/impressum'
     | '/kontakt'
     | '/login'
+    | '/mitgliederbereich'
+    | '/mitgliedersuche'
     | '/nachhaltigkeit'
     | '/wettbewerbe'
   id:
     | '__root__'
     | '/'
+    | '/125-jahre'
     | '/aktuell'
     | '/aus-weiterbildung'
     | '/barrierefreiheit'
@@ -176,15 +221,19 @@ export interface FileRouteTypes {
     | '/der-zv'
     | '/fortbildungen'
     | '/gold-silberschmiede'
+    | '/immaterielles-kulturerbe'
     | '/impressum'
     | '/kontakt'
     | '/login'
+    | '/mitgliederbereich'
+    | '/mitgliedersuche'
     | '/nachhaltigkeit'
     | '/wettbewerbe'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R125JahreRoute: typeof R125JahreRoute
   AktuellRoute: typeof AktuellRoute
   AusWeiterbildungRoute: typeof AusWeiterbildungRoute
   BarrierefreiheitRoute: typeof BarrierefreiheitRoute
@@ -192,9 +241,12 @@ export interface RootRouteChildren {
   DerZvRoute: typeof DerZvRoute
   FortbildungenRoute: typeof FortbildungenRoute
   GoldSilberschmiedeRoute: typeof GoldSilberschmiedeRoute
+  ImmateriellesKulturerbeRoute: typeof ImmateriellesKulturerbeRoute
   ImpressumRoute: typeof ImpressumRoute
   KontaktRoute: typeof KontaktRoute
   LoginRoute: typeof LoginRoute
+  MitgliederbereichRoute: typeof MitgliederbereichRoute
+  MitgliedersucheRoute: typeof MitgliedersucheRoute
   NachhaltigkeitRoute: typeof NachhaltigkeitRoute
   WettbewerbeRoute: typeof WettbewerbeRoute
 }
@@ -213,6 +265,20 @@ declare module '@tanstack/react-router' {
       path: '/nachhaltigkeit'
       fullPath: '/nachhaltigkeit'
       preLoaderRoute: typeof NachhaltigkeitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mitgliedersuche': {
+      id: '/mitgliedersuche'
+      path: '/mitgliedersuche'
+      fullPath: '/mitgliedersuche'
+      preLoaderRoute: typeof MitgliedersucheRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mitgliederbereich': {
+      id: '/mitgliederbereich'
+      path: '/mitgliederbereich'
+      fullPath: '/mitgliederbereich'
+      preLoaderRoute: typeof MitgliederbereichRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -234,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/impressum'
       fullPath: '/impressum'
       preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/immaterielles-kulturerbe': {
+      id: '/immaterielles-kulturerbe'
+      path: '/immaterielles-kulturerbe'
+      fullPath: '/immaterielles-kulturerbe'
+      preLoaderRoute: typeof ImmateriellesKulturerbeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gold-silberschmiede': {
@@ -285,6 +358,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AktuellRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/125-jahre': {
+      id: '/125-jahre'
+      path: '/125-jahre'
+      fullPath: '/125-jahre'
+      preLoaderRoute: typeof R125JahreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -297,6 +377,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R125JahreRoute: R125JahreRoute,
   AktuellRoute: AktuellRoute,
   AusWeiterbildungRoute: AusWeiterbildungRoute,
   BarrierefreiheitRoute: BarrierefreiheitRoute,
@@ -304,12 +385,25 @@ const rootRouteChildren: RootRouteChildren = {
   DerZvRoute: DerZvRoute,
   FortbildungenRoute: FortbildungenRoute,
   GoldSilberschmiedeRoute: GoldSilberschmiedeRoute,
+  ImmateriellesKulturerbeRoute: ImmateriellesKulturerbeRoute,
   ImpressumRoute: ImpressumRoute,
   KontaktRoute: KontaktRoute,
   LoginRoute: LoginRoute,
+  MitgliederbereichRoute: MitgliederbereichRoute,
+  MitgliedersucheRoute: MitgliedersucheRoute,
   NachhaltigkeitRoute: NachhaltigkeitRoute,
   WettbewerbeRoute: WettbewerbeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
