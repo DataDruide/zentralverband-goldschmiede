@@ -132,7 +132,20 @@
 
   html {
     scroll-behavior: smooth;
+    font-size: calc(16px * var(--user-font-scale, 1));
   }
+
+  /* High-Contrast Modus für Barrierefreiheit */
+  html.high-contrast {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.12 0 0);
+    --muted-foreground: oklch(0.25 0 0);
+    --border: oklch(0.4 0 0);
+    --accent: oklch(0.45 0.18 50);
+    --primary: oklch(0.12 0 0);
+  }
+  html.high-contrast a,
+  html.high-contrast button { text-decoration-thickness: 2px; }
 
   body {
     background-color: var(--color-background);
