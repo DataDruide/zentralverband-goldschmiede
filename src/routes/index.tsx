@@ -147,12 +147,14 @@ function HomePage() {
               <button
                 type="button"
                 aria-label="Imagefilm 2024 abspielen"
-                className="absolute inset-0 grid place-items-center group focus-visible:outline-none"
+                onClick={() => setVideoOpen(true)}
+                className="absolute inset-0 grid place-items-center group focus-visible:outline-none cursor-pointer"
               >
                 <span className="grid h-16 w-16 sm:h-20 sm:w-20 place-items-center rounded-full bg-cream/90 text-ink shadow-lg group-hover:scale-110 transition-transform">
                   <PlayCircle size={32} strokeWidth={1.5} />
                 </span>
               </button>
+
               <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-cream">
                 <p className="text-[10px] sm:text-xs uppercase tracking-[0.22em] opacity-80">Imagefilm 2024</p>
                 <p className="font-display text-xl sm:text-2xl mt-1 text-balance">Unser Handwerk in Bewegung</p>
