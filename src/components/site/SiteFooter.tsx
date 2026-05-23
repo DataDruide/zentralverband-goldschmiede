@@ -1,9 +1,33 @@
 import { Link } from "@tanstack/react-router";
 
+const verband = [
+  { to: "/der-zv", label: "Der Verband" },
+  { to: "/125-jahre", label: "125 Jahre ZV" },
+  { to: "/immaterielles-kulturerbe", label: "Immaterielles Kulturerbe" },
+  { to: "/nachhaltigkeit", label: "Nachhaltigkeit" },
+] as const;
+
+const themen = [
+  { to: "/aktuell", label: "Aktuelles" },
+  { to: "/mitgliedersuche", label: "Mitgliedersuche" },
+  { to: "/fortbildungen", label: "Fortbildungen" },
+  { to: "/wettbewerbe", label: "Wettbewerbe" },
+  { to: "/aus-weiterbildung", label: "Aus- & Weiterbildung" },
+  { to: "/gold-silberschmiede", label: "Gold- & Silberschmiede" },
+] as const;
+
+const recht = [
+  { to: "/kontakt", label: "Kontakt" },
+  { to: "/login", label: "Mitgliederbereich" },
+  { to: "/impressum", label: "Impressum" },
+  { to: "/datenschutz", label: "Datenschutz" },
+  { to: "/barrierefreiheit", label: "Barrierefreiheit" },
+] as const;
+
 export function SiteFooter() {
   return (
     <footer className="mt-16 sm:mt-24 border-t border-border bg-secondary/60">
-      <div className="container-prose grid gap-8 sm:gap-10 py-10 sm:py-14 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="container-prose grid gap-8 sm:gap-10 py-10 sm:py-14 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2">
           <p className="font-display text-xl sm:text-2xl text-foreground text-balance">
             Zentralverband der Deutschen Gold- & Silberschmiede e.V.
@@ -12,31 +36,20 @@ export function SiteFooter() {
             Seit 1900 vertreten wir die Interessen der Goldschmiede und Silberschmiede in
             Deutschland – auf politischer, wirtschaftlicher und kultureller Ebene.
           </p>
-        </div>
-
-        <div>
-          <h4 className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Kontakt</h4>
-          <address className="mt-3 not-italic text-sm leading-relaxed text-foreground/80">
-            Altmarkt 17<br />
-            03046 Cottbus<br />
+          <address className="mt-5 not-italic text-sm leading-relaxed text-foreground/80">
+            Altmarkt 17, 03046 Cottbus<br />
             <a href="tel:+4935529065035" className="hover:text-accent transition-colors">
               0355 / 29065035
-            </a><br />
+            </a>{" · "}
             <a href="mailto:info@zentralverband-goldschmiede.de" className="hover:text-accent transition-colors break-all">
               info@zentralverband-goldschmiede.de
             </a>
           </address>
         </div>
 
-        <div>
-          <h4 className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Rechtliches</h4>
-          <ul className="mt-3 space-y-2 text-sm">
-            <li><Link to="/kontakt" className="hover:text-accent transition-colors">Kontakt</Link></li>
-            <li><Link to="/impressum" className="hover:text-accent transition-colors">Impressum</Link></li>
-            <li><Link to="/datenschutz" className="hover:text-accent transition-colors">Datenschutz</Link></li>
-            <li><Link to="/barrierefreiheit" className="hover:text-accent transition-colors">Barrierefreiheit</Link></li>
-          </ul>
-        </div>
+        <FooterCol title="Verband" items={verband} />
+        <FooterCol title="Themen" items={themen} />
+        <FooterCol title="Service" items={recht} />
       </div>
       <div className="border-t border-border/70">
         <div className="container-prose flex flex-col sm:flex-row sm:justify-between gap-2 py-5 text-xs text-muted-foreground">
@@ -45,5 +58,28 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterCol({
+  title,
+  items,
+}: {
+  title: string;
+  items: ReadonlyArray<{ to: string; label: string }>;
+}) {
+  return (
+    <div>
+      <h4 className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{title}</h4>
+      <ul className="mt-3 space-y-2 text-sm">
+        {items.map((it) => (
+          <li key={it.to}>
+            <Link to={it.to} className="hover:text-accent transition-colors">
+              {it.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
