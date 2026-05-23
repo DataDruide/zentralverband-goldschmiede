@@ -127,11 +127,12 @@ function HomePage() {
                 Über den Verband
                 <ArrowUpRight size={18} aria-hidden />
               </LinkButton>
-              <LinkButton to="/gold-silberschmiede" variant="outline" size="lg" fullWidth>
+              <LinkButton to="/mitgliedersuche" variant="outline" size="lg" fullWidth>
                 Mitgliedsbetrieb finden
               </LinkButton>
             </div>
           </div>
+
 
           <div className="lg:col-span-5 order-1 lg:order-2">
             <div className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/5] overflow-hidden rounded-2xl border border-border shadow-[0_30px_80px_-40px_oklch(0.4_0.05_60/0.5)]">
