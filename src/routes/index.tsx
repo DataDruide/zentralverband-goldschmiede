@@ -63,28 +63,34 @@ const highlights = [
     title: "Ja zum Meister",
     text: "Der Meistertitel steht für Qualität, Verbraucherschutz und nachhaltiges Handwerk.",
     accent: "text-accent",
+    to: "/der-zv" as const,
   },
   {
     icon: Sparkles,
     title: "125 Jahre ZV",
     text: "Seit 1900 vertreten wir das Gold- und Silberschmiedehandwerk in Deutschland.",
     accent: "text-[var(--ember)]",
+    to: "/125-jahre" as const,
   },
   {
     icon: GraduationCap,
     title: "Immaterielles Kulturerbe",
     text: "Unser Handwerk ist Teil des immateriellen Kulturerbes – über 5000 Jahre Tradition.",
     accent: "text-[var(--plum)]",
+    to: "/immaterielles-kulturerbe" as const,
   },
   {
     icon: Leaf,
     title: "Green Economy",
     text: "Wir treten ein für Ressourceneffizienz, Fairtrade und Zukunftslösungen.",
     accent: "text-[var(--emerald)]",
+    to: "/nachhaltigkeit" as const,
   },
 ];
 
 function HomePage() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <>
       {/* HERO */}
