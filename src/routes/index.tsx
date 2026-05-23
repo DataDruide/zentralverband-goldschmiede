@@ -336,6 +336,46 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* IMAGEFILM MODAL */}
+      {videoOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Imagefilm 2024"
+          className="fixed inset-0 z-50 grid place-items-center bg-ink/85 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+          onClick={() => setVideoOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl aspect-video bg-ink rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setVideoOpen(false)}
+              aria-label="Schließen"
+              className="absolute top-3 right-3 z-10 grid h-10 w-10 place-items-center rounded-full bg-cream/90 text-ink hover:bg-cream transition-colors"
+            >
+              <X size={20} />
+            </button>
+            <video
+              src="https://www.zentralverband-goldschmiede.de/visioncontent/videos/Imagefilm_2024.mp4"
+              controls
+              autoPlay
+              className="h-full w-full"
+            >
+              Ihr Browser unterstützt kein HTML5-Video.{" "}
+              <a
+                href="https://www.zentralverband-goldschmiede.de/visioncontent/videos/Imagefilm_2024.mp4"
+                className="text-accent underline"
+              >
+                Video herunterladen
+              </a>
+            </video>
+          </div>
+        </div>
+      )}
     </>
   );
 }
+
