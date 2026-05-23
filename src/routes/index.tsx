@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import heroImage from "@/assets/hero-goldsmith.jpg";
 import {
   ArrowUpRight,
@@ -10,8 +11,10 @@ import {
   Briefcase,
   Megaphone,
   PlayCircle,
+  X,
 } from "lucide-react";
 import { LinkButton } from "@/components/site/Button";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -60,28 +63,34 @@ const highlights = [
     title: "Ja zum Meister",
     text: "Der Meistertitel steht für Qualität, Verbraucherschutz und nachhaltiges Handwerk.",
     accent: "text-accent",
+    to: "/der-zv" as const,
   },
   {
     icon: Sparkles,
     title: "125 Jahre ZV",
     text: "Seit 1900 vertreten wir das Gold- und Silberschmiedehandwerk in Deutschland.",
     accent: "text-[var(--ember)]",
+    to: "/125-jahre" as const,
   },
   {
     icon: GraduationCap,
     title: "Immaterielles Kulturerbe",
     text: "Unser Handwerk ist Teil des immateriellen Kulturerbes – über 5000 Jahre Tradition.",
     accent: "text-[var(--plum)]",
+    to: "/immaterielles-kulturerbe" as const,
   },
   {
     icon: Leaf,
     title: "Green Economy",
     text: "Wir treten ein für Ressourceneffizienz, Fairtrade und Zukunftslösungen.",
     accent: "text-[var(--emerald)]",
+    to: "/nachhaltigkeit" as const,
   },
 ];
 
 function HomePage() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <>
       {/* HERO */}
@@ -118,11 +127,12 @@ function HomePage() {
                 Über den Verband
                 <ArrowUpRight size={18} aria-hidden />
               </LinkButton>
-              <LinkButton to="/gold-silberschmiede" variant="outline" size="lg" fullWidth>
+              <LinkButton to="/mitgliedersuche" variant="outline" size="lg" fullWidth>
                 Mitgliedsbetrieb finden
               </LinkButton>
             </div>
           </div>
+
 
           <div className="lg:col-span-5 order-1 lg:order-2">
             <div className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/5] overflow-hidden rounded-2xl border border-border shadow-[0_30px_80px_-40px_oklch(0.4_0.05_60/0.5)]">
@@ -137,12 +147,14 @@ function HomePage() {
               <button
                 type="button"
                 aria-label="Imagefilm 2024 abspielen"
-                className="absolute inset-0 grid place-items-center group focus-visible:outline-none"
+                onClick={() => setVideoOpen(true)}
+                className="absolute inset-0 grid place-items-center group focus-visible:outline-none cursor-pointer"
               >
                 <span className="grid h-16 w-16 sm:h-20 sm:w-20 place-items-center rounded-full bg-cream/90 text-ink shadow-lg group-hover:scale-110 transition-transform">
                   <PlayCircle size={32} strokeWidth={1.5} />
                 </span>
               </button>
+
               <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-cream">
                 <p className="text-[10px] sm:text-xs uppercase tracking-[0.22em] opacity-80">Imagefilm 2024</p>
                 <p className="font-display text-xl sm:text-2xl mt-1 text-balance">Unser Handwerk in Bewegung</p>
@@ -177,14 +189,22 @@ function HomePage() {
           <h2 className="mt-4 font-display text-3xl sm:text-4xl text-balance">Wofür wir stehen</h2>
         </div>
         <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {highlights.map(({ icon: Icon, title, text, accent }) => (
-            <div key={title} className="card-jewel p-6 sm:p-7">
+          {highlights.map(({ icon: Icon, title, text, accent, to }) => (
+            <Link
+              key={title}
+              to={to}
+              className="card-jewel p-6 sm:p-7 group block focus-visible:outline-none"
+            >
               <Icon className={accent} size={30} strokeWidth={1.5} />
-              <h3 className="mt-4 sm:mt-5 font-display text-lg sm:text-xl text-balance">{title}</h3>
+              <h3 className="mt-4 sm:mt-5 font-display text-lg sm:text-xl text-balance group-hover:text-accent transition-colors">{title}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed text-pretty">{text}</p>
-            </div>
+              <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                Mehr erfahren <ArrowUpRight size={14} />
+              </span>
+            </Link>
           ))}
         </div>
+
       </section>
 
       {/* INTRO TEXT auf Smaragd-Band */}
@@ -316,6 +336,46 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* IMAGEFILM MODAL */}
+      {videoOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Imagefilm 2024"
+          className="fixed inset-0 z-50 grid place-items-center bg-ink/85 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+          onClick={() => setVideoOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl aspect-video bg-ink rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setVideoOpen(false)}
+              aria-label="Schließen"
+              className="absolute top-3 right-3 z-10 grid h-10 w-10 place-items-center rounded-full bg-cream/90 text-ink hover:bg-cream transition-colors"
+            >
+              <X size={20} />
+            </button>
+            <video
+              src="https://www.zentralverband-goldschmiede.de/visioncontent/videos/Imagefilm_2024.mp4"
+              controls
+              autoPlay
+              className="h-full w-full"
+            >
+              Ihr Browser unterstützt kein HTML5-Video.{" "}
+              <a
+                href="https://www.zentralverband-goldschmiede.de/visioncontent/videos/Imagefilm_2024.mp4"
+                className="text-accent underline"
+              >
+                Video herunterladen
+              </a>
+            </video>
+          </div>
+        </div>
+      )}
     </>
   );
 }
+
