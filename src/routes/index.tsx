@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import heroImage from "@/assets/hero-goldsmith.jpg";
 import {
   ArrowUpRight,
@@ -10,8 +11,10 @@ import {
   Briefcase,
   Megaphone,
   PlayCircle,
+  X,
 } from "lucide-react";
 import { LinkButton } from "@/components/site/Button";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
