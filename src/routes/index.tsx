@@ -189,14 +189,22 @@ function HomePage() {
           <h2 className="mt-4 font-display text-3xl sm:text-4xl text-balance">Wofür wir stehen</h2>
         </div>
         <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {highlights.map(({ icon: Icon, title, text, accent }) => (
-            <div key={title} className="card-jewel p-6 sm:p-7">
+          {highlights.map(({ icon: Icon, title, text, accent, to }) => (
+            <Link
+              key={title}
+              to={to}
+              className="card-jewel p-6 sm:p-7 group block focus-visible:outline-none"
+            >
               <Icon className={accent} size={30} strokeWidth={1.5} />
-              <h3 className="mt-4 sm:mt-5 font-display text-lg sm:text-xl text-balance">{title}</h3>
+              <h3 className="mt-4 sm:mt-5 font-display text-lg sm:text-xl text-balance group-hover:text-accent transition-colors">{title}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed text-pretty">{text}</p>
-            </div>
+              <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                Mehr erfahren <ArrowUpRight size={14} />
+              </span>
+            </Link>
           ))}
         </div>
+
       </section>
 
       {/* INTRO TEXT auf Smaragd-Band */}
