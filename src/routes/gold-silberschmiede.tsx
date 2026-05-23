@@ -34,7 +34,7 @@ function GoldSilberPage() {
             Schauen Sie unter »Mitgliedsbetriebe« – dort sind unsere organisierten Betriebe
             aufgeführt. Sie können sich vertrauensvoll an die dort angegebenen Adressen wenden.
           </p>
-          <LinkButton to="/kontakt" className="mt-2">Mitgliedsbetrieb suchen</LinkButton>
+          <LinkButton to="/mitgliedersuche" className="mt-2">Mitgliedsbetrieb suchen</LinkButton>
         </div>
         <div className="rounded-sm border border-border bg-card p-6 sm:p-8">
           <h2 className="font-display text-xl sm:text-2xl text-balance">Leistungen unserer Betriebe</h2>
