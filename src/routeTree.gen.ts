@@ -26,6 +26,7 @@ import { Route as AusWeiterbildungRouteImport } from './routes/aus-weiterbildung
 import { Route as AktuellRouteImport } from './routes/aktuell'
 import { Route as R125JahreRouteImport } from './routes/125-jahre'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiAiChatRouteImport } from './routes/api/ai-chat'
 
 const WettbewerbeRoute = WettbewerbeRouteImport.update({
   id: '/wettbewerbe',
@@ -112,6 +113,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAiChatRoute = ApiAiChatRouteImport.update({
+  id: '/api/ai-chat',
+  path: '/api/ai-chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/mitgliedersuche': typeof MitgliedersucheRoute
   '/nachhaltigkeit': typeof NachhaltigkeitRoute
   '/wettbewerbe': typeof WettbewerbeRoute
+  '/api/ai-chat': typeof ApiAiChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/mitgliedersuche': typeof MitgliedersucheRoute
   '/nachhaltigkeit': typeof NachhaltigkeitRoute
   '/wettbewerbe': typeof WettbewerbeRoute
+  '/api/ai-chat': typeof ApiAiChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -170,6 +178,7 @@ export interface FileRoutesById {
   '/mitgliedersuche': typeof MitgliedersucheRoute
   '/nachhaltigkeit': typeof NachhaltigkeitRoute
   '/wettbewerbe': typeof WettbewerbeRoute
+  '/api/ai-chat': typeof ApiAiChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -191,6 +200,7 @@ export interface FileRouteTypes {
     | '/mitgliedersuche'
     | '/nachhaltigkeit'
     | '/wettbewerbe'
+    | '/api/ai-chat'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -210,6 +220,7 @@ export interface FileRouteTypes {
     | '/mitgliedersuche'
     | '/nachhaltigkeit'
     | '/wettbewerbe'
+    | '/api/ai-chat'
   id:
     | '__root__'
     | '/'
@@ -229,6 +240,7 @@ export interface FileRouteTypes {
     | '/mitgliedersuche'
     | '/nachhaltigkeit'
     | '/wettbewerbe'
+    | '/api/ai-chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -249,6 +261,7 @@ export interface RootRouteChildren {
   MitgliedersucheRoute: typeof MitgliedersucheRoute
   NachhaltigkeitRoute: typeof NachhaltigkeitRoute
   WettbewerbeRoute: typeof WettbewerbeRoute
+  ApiAiChatRoute: typeof ApiAiChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -372,6 +385,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/ai-chat': {
+      id: '/api/ai-chat'
+      path: '/api/ai-chat'
+      fullPath: '/api/ai-chat'
+      preLoaderRoute: typeof ApiAiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -393,6 +413,7 @@ const rootRouteChildren: RootRouteChildren = {
   MitgliedersucheRoute: MitgliedersucheRoute,
   NachhaltigkeitRoute: NachhaltigkeitRoute,
   WettbewerbeRoute: WettbewerbeRoute,
+  ApiAiChatRoute: ApiAiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
