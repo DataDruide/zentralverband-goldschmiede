@@ -60,12 +60,21 @@ export function SiteHeader() {
             </Link>
           ))}
           {user ? (
-            <button
-              onClick={handleLogout}
-              className="ml-2 inline-flex items-center gap-1.5 rounded-full border border-accent/70 px-3.5 py-1.5 text-[13px] font-medium text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
-            >
-              <LogOut size={14} /> Logout
-            </button>
+            <>
+              <Link
+                to="/mitgliederbereich"
+                activeProps={{ className: "text-accent" }}
+                className="ml-2 px-2.5 py-2 text-[13px] text-foreground/80 hover:text-accent transition-colors whitespace-nowrap"
+              >
+                Mein Bereich
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="ml-1 inline-flex items-center gap-1.5 rounded-full border border-accent/70 px-3.5 py-1.5 text-[13px] font-medium text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
+              >
+                <LogOut size={14} /> Logout
+              </button>
+            </>
           ) : (
             <Link
               to="/login"
@@ -102,12 +111,22 @@ export function SiteHeader() {
               </Link>
             ))}
             {user ? (
-              <button
-                onClick={handleLogout}
-                className="mt-4 mb-2 inline-flex items-center justify-center gap-2 rounded-full border border-accent px-5 py-3 text-sm font-medium text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
-              >
-                <LogOut size={16} /> Logout
-              </button>
+              <>
+                <Link
+                  to="/mitgliederbereich"
+                  onClick={() => setOpen(false)}
+                  activeProps={{ className: "text-accent" }}
+                  className="py-3 text-base border-b border-border/60 text-foreground/85 hover:text-accent transition-colors"
+                >
+                  Mein Bereich
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="mt-4 mb-2 inline-flex items-center justify-center gap-2 rounded-full border border-accent px-5 py-3 text-sm font-medium text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
+                >
+                  <LogOut size={16} /> Logout
+                </button>
+              </>
             ) : (
               <Link
                 to="/login"
