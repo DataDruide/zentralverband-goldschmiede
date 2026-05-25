@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { VisitorCounter } from "./VisitorCounter";
 
 const verband = [
   { to: "/der-zv", label: "Der Verband" },
@@ -52,9 +53,12 @@ export function SiteFooter() {
         <FooterCol title="Service" items={recht} />
       </div>
       <div className="border-t border-border/70">
-        <div className="container-prose flex flex-col sm:flex-row sm:justify-between gap-2 py-5 text-xs text-muted-foreground">
+        <div className="container-prose flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-5 text-xs text-muted-foreground">
           <span>© {new Date().getFullYear()} Zentralverband der Deutschen Gold- & Silberschmiede e.V.</span>
-          <span className="italic">Schmuck und Gerät von Menschen für Menschen.</span>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <VisitorCounter />
+            <span className="italic hidden sm:inline">Schmuck und Gerät von Menschen für Menschen.</span>
+          </div>
         </div>
       </div>
     </footer>
