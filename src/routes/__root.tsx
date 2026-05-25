@@ -68,6 +68,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Zentralverband der Deutschen Gold- & Silberschmiede e.V." },
+      { name: "description", content: "Zentralverband vertritt die Interessen aller Goldschmiedinnen und Silberschmiedinnen in Deutschland – auf politischer, wirtschaftlicher und kultureller Ebene." },
+      { property: "og:description", content: "Zentralverband vertritt die Interessen aller Goldschmiedinnen und Silberschmiedinnen in Deutschland – auf politischer, wirtschaftlicher und kultureller Ebene." },
+      { name: "twitter:description", content: "Zentralverband vertritt die Interessen aller Goldschmiedinnen und Silberschmiedinnen in Deutschland – auf politischer, wirtschaftlicher und kultureller Ebene." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d15018ac-35eb-4b70-a4a0-37d78b7d3c91/id-preview-b3e6671d--51d12d03-d068-4cf1-a3ff-36c5cc334885.lovable.app-1779714130584.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d15018ac-35eb-4b70-a4a0-37d78b7d3c91/id-preview-b3e6671d--51d12d03-d068-4cf1-a3ff-36c5cc334885.lovable.app-1779714130584.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
