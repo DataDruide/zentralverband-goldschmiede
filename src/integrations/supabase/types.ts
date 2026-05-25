@@ -92,6 +92,24 @@ export type Database = {
         }
         Relationships: []
       }
+      site_stats: {
+        Row: {
+          key: string
+          updated_at: string
+          visits: number
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          visits?: number
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          visits?: number
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -125,6 +143,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      increment_visitor: { Args: never; Returns: number }
     }
     Enums: {
       app_role: "admin" | "mitglied"
