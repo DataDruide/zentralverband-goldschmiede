@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Button } from "@/components/site/Button";
 import { AssistantChat } from "@/components/site/AssistantChat";
+import { PunzenCard } from "@/components/site/PunzenCard";
 import { useAuth } from "@/hooks/useAuth";
 
 export const Route = createFileRoute("/mitgliederbereich")({
@@ -42,6 +43,7 @@ function MitgliederPage() {
               <h3 className="mt-3 font-display text-xl">Ihre Daten</h3>
               <p className="mt-2 text-sm text-muted-foreground break-all">E-Mail: {user.email}</p>
             </div>
+            {user.email && <PunzenCard email={user.email} />}
             <div className="card-jewel p-6">
               <p className="chip chip-ember">Downloads</p>
               <h3 className="mt-3 font-display text-xl">Materialien</h3>
