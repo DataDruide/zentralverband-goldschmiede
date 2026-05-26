@@ -13,6 +13,7 @@ import {
   PlayCircle,
   X,
 } from "lucide-react";
+import { GoldPriceLive } from "@/components/site/GoldPriceLive";
 import { LinkButton } from "@/components/site/Button";
 
 
