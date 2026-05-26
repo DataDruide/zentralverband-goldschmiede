@@ -57,6 +57,11 @@ function MitgliedersuchePage() {
         intro="Goldschmiede- und Silberschmiede-Betriebe des Zentralverbandes – durchsuchbar nach Ort, PLZ oder Name."
       />
       <section className="container-prose py-12 sm:py-16">
+        <div className="mb-6 flex flex-wrap gap-2">
+          <Link to="/innungen" className="chip hover:border-accent hover:text-accent transition-colors">
+            → Alle Landesinnungen ansehen
+          </Link>
+        </div>
         {/* Filter */}
         <div className="card-jewel p-4 sm:p-6 mb-8 sticky top-[72px] z-10 bg-card/95 backdrop-blur">
           <div className="grid gap-3 sm:grid-cols-[1fr_auto_auto]">
