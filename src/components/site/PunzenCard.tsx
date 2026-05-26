@@ -69,7 +69,7 @@ export function PunzenCard({ email }: { email: string }) {
             </div>
           </div>
         ) : (
-          <PunzenContent account={data.data as PunzenAccount | null} />
+          <PunzenContent account={data.data as unknown as PunzenAccount | null} />
         )}
       </div>
 
