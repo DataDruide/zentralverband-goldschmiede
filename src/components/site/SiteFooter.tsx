@@ -11,6 +11,7 @@ const verband = [
 const themen = [
   { to: "/aktuell", label: "Aktuelles" },
   { to: "/mitgliedersuche", label: "Mitgliedersuche" },
+  { to: "/innungen", label: "Innungen" },
   { to: "/fortbildungen", label: "Fortbildungen" },
   { to: "/wettbewerbe", label: "Wettbewerbe" },
   { to: "/aus-weiterbildung", label: "Aus- & Weiterbildung" },
