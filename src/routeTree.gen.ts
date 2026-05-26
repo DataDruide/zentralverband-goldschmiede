@@ -15,6 +15,7 @@ import { Route as MitgliedersucheRouteImport } from './routes/mitgliedersuche'
 import { Route as MitgliederbereichRouteImport } from './routes/mitgliederbereich'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as InnungenRouteImport } from './routes/innungen'
 import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as ImmateriellesKulturerbeRouteImport } from './routes/immaterielles-kulturerbe'
 import { Route as GoldSilberschmiedeRouteImport } from './routes/gold-silberschmiede'
@@ -56,6 +57,11 @@ const LoginRoute = LoginRouteImport.update({
 const KontaktRoute = KontaktRouteImport.update({
   id: '/kontakt',
   path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InnungenRoute = InnungenRouteImport.update({
+  id: '/innungen',
+  path: '/innungen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpressumRoute = ImpressumRouteImport.update({
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/gold-silberschmiede': typeof GoldSilberschmiedeRoute
   '/immaterielles-kulturerbe': typeof ImmateriellesKulturerbeRoute
   '/impressum': typeof ImpressumRoute
+  '/innungen': typeof InnungenRoute
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
   '/mitgliederbereich': typeof MitgliederbereichRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/gold-silberschmiede': typeof GoldSilberschmiedeRoute
   '/immaterielles-kulturerbe': typeof ImmateriellesKulturerbeRoute
   '/impressum': typeof ImpressumRoute
+  '/innungen': typeof InnungenRoute
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
   '/mitgliederbereich': typeof MitgliederbereichRoute
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/gold-silberschmiede': typeof GoldSilberschmiedeRoute
   '/immaterielles-kulturerbe': typeof ImmateriellesKulturerbeRoute
   '/impressum': typeof ImpressumRoute
+  '/innungen': typeof InnungenRoute
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
   '/mitgliederbereich': typeof MitgliederbereichRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
     | '/gold-silberschmiede'
     | '/immaterielles-kulturerbe'
     | '/impressum'
+    | '/innungen'
     | '/kontakt'
     | '/login'
     | '/mitgliederbereich'
@@ -214,6 +224,7 @@ export interface FileRouteTypes {
     | '/gold-silberschmiede'
     | '/immaterielles-kulturerbe'
     | '/impressum'
+    | '/innungen'
     | '/kontakt'
     | '/login'
     | '/mitgliederbereich'
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/gold-silberschmiede'
     | '/immaterielles-kulturerbe'
     | '/impressum'
+    | '/innungen'
     | '/kontakt'
     | '/login'
     | '/mitgliederbereich'
@@ -255,6 +267,7 @@ export interface RootRouteChildren {
   GoldSilberschmiedeRoute: typeof GoldSilberschmiedeRoute
   ImmateriellesKulturerbeRoute: typeof ImmateriellesKulturerbeRoute
   ImpressumRoute: typeof ImpressumRoute
+  InnungenRoute: typeof InnungenRoute
   KontaktRoute: typeof KontaktRoute
   LoginRoute: typeof LoginRoute
   MitgliederbereichRoute: typeof MitgliederbereichRoute
@@ -306,6 +319,13 @@ declare module '@tanstack/react-router' {
       path: '/kontakt'
       fullPath: '/kontakt'
       preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/innungen': {
+      id: '/innungen'
+      path: '/innungen'
+      fullPath: '/innungen'
+      preLoaderRoute: typeof InnungenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impressum': {
@@ -407,6 +427,7 @@ const rootRouteChildren: RootRouteChildren = {
   GoldSilberschmiedeRoute: GoldSilberschmiedeRoute,
   ImmateriellesKulturerbeRoute: ImmateriellesKulturerbeRoute,
   ImpressumRoute: ImpressumRoute,
+  InnungenRoute: InnungenRoute,
   KontaktRoute: KontaktRoute,
   LoginRoute: LoginRoute,
   MitgliederbereichRoute: MitgliederbereichRoute,
@@ -418,3 +439,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

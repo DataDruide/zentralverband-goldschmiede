@@ -247,10 +247,9 @@ function HomePage() {
               <span className="chip chip-ember">Goldpreis</span>
               <TrendingUp className="text-[var(--ember)]" size={22} />
             </div>
-            <p className="mt-5 font-display text-3xl sm:text-4xl">2.418 €<span className="text-base text-muted-foreground"> / oz</span></p>
-            <p className="mt-2 text-sm text-muted-foreground text-pretty">
-              Der aktuelle Goldpreis mit Entwicklungsverlauf über den Tag – verlässlich für
-              Kalkulation und Beratung.
+            <GoldPriceLive />
+            <p className="mt-3 text-sm text-muted-foreground text-pretty">
+              Aktueller Spot-Kurs – verlässliche Basis für Kalkulation und Beratung.
             </p>
             <Link to="/aktuell" className="mt-5 inline-flex items-center gap-1 text-sm text-[var(--ember)] font-medium hover:gap-2 transition-all">
               Zum Verlauf <ArrowUpRight size={16} />
