@@ -358,20 +358,14 @@ function HomePage() {
             >
               <X size={20} />
             </button>
-            <video
-              src="https://www.zentralverband-goldschmiede.de/visioncontent/videos/Imagefilm_2024.mp4"
-              controls
-              autoPlay
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&modestbranding=1"
+              title="Imagefilm 2024 — Zentralverband der Deutschen Gold- & Silberschmiede"
               className="h-full w-full"
-            >
-              Ihr Browser unterstützt kein HTML5-Video.{" "}
-              <a
-                href="https://www.zentralverband-goldschmiede.de/visioncontent/videos/Imagefilm_2024.mp4"
-                className="text-accent underline"
-              >
-                Video herunterladen
-              </a>
-            </video>
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
           </div>
         </div>
       )}
