@@ -25,7 +25,12 @@ export function GoldPriceLive() {
   }
 
   if (!data?.ok) {
-    return <p className="mt-5 font-display text-3xl sm:text-4xl text-muted-foreground">— € <span className="text-base">/ oz</span></p>;
+    return (
+      <div className="mt-5">
+        <p className="font-display text-2xl sm:text-3xl text-muted-foreground">Kurs derzeit nicht verfügbar</p>
+        <p className="mt-1 text-xs text-muted-foreground">Bitte später erneut versuchen.</p>
+      </div>
+    );
   }
 
   const change = data.change_pct;
