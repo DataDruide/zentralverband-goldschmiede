@@ -68,6 +68,30 @@ export type Database = {
         }
         Relationships: []
       }
+      gold_prices: {
+        Row: {
+          created_at: string
+          day: string
+          eur_per_g: number
+          eur_per_oz: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          day: string
+          eur_per_g: number
+          eur_per_oz: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          day?: string
+          eur_per_g?: number
+          eur_per_oz?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
