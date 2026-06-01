@@ -1,6 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { MapPin, ExternalLink } from "lucide-react";
+import gallery1 from "@/assets/innung-1.jpg";
+import gallery2 from "@/assets/innung-2.jpg";
+import gallery3 from "@/assets/innung-3.jpg";
+import gallery4 from "@/assets/innung-4.jpg";
+
+const galleryImages = [
+  { src: gallery1, alt: "Werkzeuge und Ringe auf der Werkbank einer Goldschmiede" },
+  { src: gallery2, alt: "Goldschmied lötet einen silbernen Anhänger" },
+  { src: gallery3, alt: "Handgefertigte Gold- und Silberringe auf Samttablett" },
+  { src: gallery4, alt: "Auszubildender feilt einen Silberring an der Werkbank" },
+];
 
 export const Route = createFileRoute("/innungen")({
   head: () => ({
