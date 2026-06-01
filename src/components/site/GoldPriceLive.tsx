@@ -1,15 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { TrendingUp, TrendingDown, Loader2 } from "lucide-react";
-import { getGoldPrice } from "@/lib/goldprice.functions";
+import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts";
+import { getGoldPrice, getGoldHistory } from "@/lib/goldprice.functions";
 
 export function GoldPriceLive() {
-  const fn = useServerFn(getGoldPrice);
+  const priceFn = useServerFn(getGoldPrice);
+  const histFn = useServerFn(getGoldHistory);
+
   const { data, isLoading } = useQuery({
     queryKey: ["goldprice"],
-    queryFn: () => fn(),
+    queryFn: () => priceFn(),
     staleTime: 60 * 1000,
     refetchInterval: 5 * 60 * 1000,
+  });
+
+  const { data: history } = useQuery({
+    queryKey: ["goldprice-history"],
+    queryFn: () => histFn(),
+    staleTime: 5 * 60 * 1000,
   });
 
   const fmt = (n: number) =>
@@ -35,6 +44,11 @@ export function GoldPriceLive() {
 
   const change = data.change_pct;
   const up = (change ?? 0) >= 0;
+  const showChart = (history?.length ?? 0) >= 2;
+  const first = history?.[0]?.eur_per_g;
+  const last = history?.[history.length - 1]?.eur_per_g;
+  const trend7 = showChart && first && last ? ((last - first) / first) * 100 : null;
+  const trendUp = (trend7 ?? 0) >= 0;
 
   return (
     <>
@@ -51,6 +65,46 @@ export function GoldPriceLive() {
           </span>
         )}
       </div>
+
+      {showChart && (
+        <div className="mt-3" aria-label="Goldpreis 7-Tage-Verlauf in Euro pro Gramm">
+          <div className="h-14 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={history} margin={{ top: 4, right: 4, left: 4, bottom: 4 }}>
+                <Line
+                  type="monotone"
+                  dataKey="eur_per_g"
+                  stroke="var(--ember)"
+                  strokeWidth={2}
+                  dot={false}
+                  isAnimationActive={false}
+                />
+                <Tooltip
+                  cursor={{ stroke: "var(--ember)", strokeOpacity: 0.3 }}
+                  contentStyle={{
+                    fontSize: 11,
+                    background: "var(--background)",
+                    border: "1px solid var(--border)",
+                    borderRadius: 8,
+                    padding: "4px 8px",
+                  }}
+                  labelFormatter={(l) => new Date(l as string).toLocaleDateString("de-DE")}
+                  formatter={(v: number) => [`${fmt(v)} € / g`, ""]}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+          {trend7 !== null && (
+            <p className="mt-1 text-[11px] text-muted-foreground tabular-nums">
+              7-Tage:{" "}
+              <span className={trendUp ? "text-emerald-600 font-medium" : "text-destructive font-medium"}>
+                {trendUp ? "+" : ""}{fmt(trend7)} %
+              </span>
+            </p>
+          )}
+        </div>
+      )}
+
       <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground mt-1">
         Stand: {new Date(data.updated).toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })} Uhr
       </p>
