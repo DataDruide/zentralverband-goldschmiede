@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "pages:build": "npm run build"
+    "build:pages": "npm run build && node ./scripts/build-pages.js",
+    "pages:build": "npm run build:pages"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
