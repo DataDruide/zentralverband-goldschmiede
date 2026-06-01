@@ -1,6 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { MapPin, ExternalLink } from "lucide-react";
+import gallery1 from "@/assets/innung-1.jpg";
+import gallery2 from "@/assets/innung-2.jpg";
+import gallery3 from "@/assets/innung-3.jpg";
+import gallery4 from "@/assets/innung-4.jpg";
+
+const galleryImages = [
+  { src: gallery1, alt: "Werkzeuge und Ringe auf der Werkbank einer Goldschmiede" },
+  { src: gallery2, alt: "Goldschmied lötet einen silbernen Anhänger" },
+  { src: gallery3, alt: "Handgefertigte Gold- und Silberringe auf Samttablett" },
+  { src: gallery4, alt: "Auszubildender feilt einen Silberring an der Werkbank" },
+];
 
 export const Route = createFileRoute("/innungen")({
   head: () => ({
@@ -61,6 +72,28 @@ function InnungenPage() {
             Betriebe der Innungen durchsuchen →
           </Link>
         </div>
+
+        {/* Bildergalerie */}
+        <section className="mb-12" aria-labelledby="innung-galerie">
+          <h2 id="innung-galerie" className="font-display text-2xl mb-4 flex items-center gap-2">
+            <span className="inline-block h-1.5 w-6 bg-gradient-to-r from-[var(--gold)] to-[var(--ember)] rounded-full" />
+            Aus den Werkstätten der Innungen
+          </h2>
+          <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
+            {galleryImages.map((img, idx) => (
+              <figure key={idx} className="group relative overflow-hidden rounded-xl border border-border aspect-[4/3]">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  width={1024}
+                  height={768}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </figure>
+            ))}
+          </div>
+        </section>
 
         <div className="space-y-8">
           {Object.entries(byLand).sort(([a], [b]) => a.localeCompare(b, "de")).map(([land, list]) => (
