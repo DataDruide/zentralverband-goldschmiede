@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WettbewerbeRouteImport } from './routes/wettbewerbe'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as NachhaltigkeitRouteImport } from './routes/nachhaltigkeit'
 import { Route as MitgliedersucheRouteImport } from './routes/mitgliedersuche'
 import { Route as MitgliederbereichRouteImport } from './routes/mitgliederbereich'
@@ -32,6 +33,11 @@ import { Route as ApiAiChatRouteImport } from './routes/api/ai-chat'
 const WettbewerbeRoute = WettbewerbeRouteImport.update({
   id: '/wettbewerbe',
   path: '/wettbewerbe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NachhaltigkeitRoute = NachhaltigkeitRouteImport.update({
@@ -143,6 +149,7 @@ export interface FileRoutesByFullPath {
   '/mitgliederbereich': typeof MitgliederbereichRoute
   '/mitgliedersuche': typeof MitgliedersucheRoute
   '/nachhaltigkeit': typeof NachhaltigkeitRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/wettbewerbe': typeof WettbewerbeRoute
   '/api/ai-chat': typeof ApiAiChatRoute
 }
@@ -164,6 +171,7 @@ export interface FileRoutesByTo {
   '/mitgliederbereich': typeof MitgliederbereichRoute
   '/mitgliedersuche': typeof MitgliedersucheRoute
   '/nachhaltigkeit': typeof NachhaltigkeitRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/wettbewerbe': typeof WettbewerbeRoute
   '/api/ai-chat': typeof ApiAiChatRoute
 }
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   '/mitgliederbereich': typeof MitgliederbereichRoute
   '/mitgliedersuche': typeof MitgliedersucheRoute
   '/nachhaltigkeit': typeof NachhaltigkeitRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/wettbewerbe': typeof WettbewerbeRoute
   '/api/ai-chat': typeof ApiAiChatRoute
 }
@@ -209,6 +218,7 @@ export interface FileRouteTypes {
     | '/mitgliederbereich'
     | '/mitgliedersuche'
     | '/nachhaltigkeit'
+    | '/sitemap.xml'
     | '/wettbewerbe'
     | '/api/ai-chat'
   fileRoutesByTo: FileRoutesByTo
@@ -230,6 +240,7 @@ export interface FileRouteTypes {
     | '/mitgliederbereich'
     | '/mitgliedersuche'
     | '/nachhaltigkeit'
+    | '/sitemap.xml'
     | '/wettbewerbe'
     | '/api/ai-chat'
   id:
@@ -251,6 +262,7 @@ export interface FileRouteTypes {
     | '/mitgliederbereich'
     | '/mitgliedersuche'
     | '/nachhaltigkeit'
+    | '/sitemap.xml'
     | '/wettbewerbe'
     | '/api/ai-chat'
   fileRoutesById: FileRoutesById
@@ -273,6 +285,7 @@ export interface RootRouteChildren {
   MitgliederbereichRoute: typeof MitgliederbereichRoute
   MitgliedersucheRoute: typeof MitgliedersucheRoute
   NachhaltigkeitRoute: typeof NachhaltigkeitRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WettbewerbeRoute: typeof WettbewerbeRoute
   ApiAiChatRoute: typeof ApiAiChatRoute
 }
@@ -284,6 +297,13 @@ declare module '@tanstack/react-router' {
       path: '/wettbewerbe'
       fullPath: '/wettbewerbe'
       preLoaderRoute: typeof WettbewerbeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nachhaltigkeit': {
@@ -433,6 +453,7 @@ const rootRouteChildren: RootRouteChildren = {
   MitgliederbereichRoute: MitgliederbereichRoute,
   MitgliedersucheRoute: MitgliedersucheRoute,
   NachhaltigkeitRoute: NachhaltigkeitRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   WettbewerbeRoute: WettbewerbeRoute,
   ApiAiChatRoute: ApiAiChatRoute,
 }
