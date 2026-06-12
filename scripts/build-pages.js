@@ -36,19 +36,6 @@ async function main() {
   } catch (e) {
     // If already renamed, that's fine
   }
-
-  // Update wrangler.json to remove the ../client reference since assets are now local
-  const wranglerJsonPath = path.join(serverDir, 'wrangler.json');
-  try {
-    const wranglerJson = JSON.parse(await fs.readFile(wranglerJsonPath, 'utf-8'));
-    // Assets are now in ./assets, not ../client
-    wranglerJson.assets = { directory: './assets' };
-    wranglerJson.main = '_worker.js';
-    await fs.writeFile(wranglerJsonPath, JSON.stringify(wranglerJson, null, 2));
-  } catch (e) {
-    console.warn('Warning: Could not update wrangler.json:', e.message);
-  }
-
   console.log(`Built for Cloudflare Pages. Deploy ${serverDir} with output directory set to dist/server`);
 }
 
