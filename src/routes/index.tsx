@@ -107,7 +107,7 @@ function HomePage() {
           style={{ background: "radial-gradient(circle, var(--emerald-soft), transparent 70%)" }}
         />
         <div className="container-prose relative grid gap-10 py-12 sm:py-16 md:py-24 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
+          <div className="lg:col-span-7 flex flex-col justify-center order-1">
             <span className="chip self-start">
               <span className="accent-dot" style={{ background: "var(--gold)", margin: 0 }} />
               Seit 1900
