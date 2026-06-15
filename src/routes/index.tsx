@@ -135,7 +135,7 @@ function HomePage() {
           </div>
 
 
-          <div className="lg:col-span-5 order-1 lg:order-2">
+          <div className="lg:col-span-5 order-2">
             <div className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/5] overflow-hidden rounded-2xl border border-border shadow-[0_30px_80px_-40px_oklch(0.4_0.05_60/0.5)]">
               <img
                 src={heroImage}
