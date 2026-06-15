@@ -359,7 +359,7 @@ function HomePage() {
               <X size={20} />
             </button>
             <iframe
-              src="https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&modestbranding=1"
+              src="https://www.youtube-nocookie.com/embed/9p-9qB6nSMI?autoplay=1&rel=0&modestbranding=1"
               title="Imagefilm 2024 — Zentralverband der Deutschen Gold- & Silberschmiede"
               className="h-full w-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
